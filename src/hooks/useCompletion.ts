@@ -66,7 +66,7 @@ export function useCompletion(
   useEffect(() => {
     const update = () => setIsComplete(readCompletion(key));
     update();
-    return subscribe(update);
+    return subscribe(update) as unknown as () => void;
   }, [key]);
 
   const toggle = useCallback(() => {
@@ -91,7 +91,7 @@ export function useSubcategoryCompletionCount(
   useEffect(() => {
     const update = () => setCount(countComplete(domainSlug, subcategory));
     update();
-    return subscribe(update);
+    return subscribe(update) as unknown as () => void;
   }, [domainSlug, subcategory]);
 
   return count;
@@ -107,7 +107,7 @@ export function useDomainCompletionCount(domain: Domain) {
   useEffect(() => {
     const update = () => setCount(countDomainComplete(domain));
     update();
-    return subscribe(update);
+    return subscribe(update) as unknown as () => void;
   }, [domain]);
 
   return count;
