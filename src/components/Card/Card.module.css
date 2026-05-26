@@ -1,0 +1,58 @@
+/*
+ * Card styles — base appearance only. Child cards layer their own content
+ * styling on top.
+ */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-24);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-strong);
+  background-color: var(--color-surface-hover);
+}
+
+.interactive:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+  /* Locked cards explicitly do NOT lift or change on hover. */
+}
+
+.lockedBadge {
+  position: absolute;
+  top: var(--space-16);
+  right: var(--space-16);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  background-color: var(--color-bg-subtle);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+}

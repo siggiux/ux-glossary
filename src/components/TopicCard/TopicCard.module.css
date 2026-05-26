@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.name {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+/*
+ * Completed treatment is intentionally subtle — a thin accent stripe on the
+ * left edge would be too heavy; the filled checkmark + faint colour shift
+ * communicates state without dominating the card.
+ */
+.complete {
+  color: var(--color-accent);
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}

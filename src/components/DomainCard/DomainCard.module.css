@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.name {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+}
+
+.description {
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  font-size: var(--text-base);
+}
+
+.progress {
+  margin-top: auto;
+  padding-top: var(--space-16);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}

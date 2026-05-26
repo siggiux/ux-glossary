@@ -1,0 +1,32 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  color: transparent;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle:hover {
+  border-color: var(--color-accent);
+}
+
+.checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.checked:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
