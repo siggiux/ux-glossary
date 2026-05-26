@@ -1,0 +1,13 @@
+/*
+ * Article container — sets the prose max-width and the vertical rhythm
+ * between blocks. Individual blocks own their internal spacing.
+ */
+
+.article {
+  max-width: var(--max-width-prose);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  /* Default rhythm between blocks. Block-specific overrides handle the rest. */
+  gap: var(--space-24);
+}

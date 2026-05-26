@@ -62,3 +62,9 @@
   border-radius: var(--radius-lg);
   color: var(--color-text-muted);
 }
+
+/* Wrapper to keep the Mark-complete button aligned with the article column. */
+.articleWrap {
+  max-width: var(--max-width-prose);
+  margin: 0 auto;
+}

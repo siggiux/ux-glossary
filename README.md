@@ -66,6 +66,11 @@ src/
   App.tsx                 ← React Router route tree
   main.tsx                ← entry point (mounts App into #root)
   global.d.ts             ← TS declarations for CSS Modules
+
+  components/Article/     ← article renderer + content blocks
+    visuals/              ← static diagrams (one component per visualId)
+    demos/                ← interactive demos (one component per visualId)
+    visuals/index.ts      ← registry mapping visualId → component
 ```
 
 ---
@@ -100,6 +105,56 @@ Dark mode is a single block at the bottom of `tokens.css` that overrides the sem
 ```
 
 That's it. The topic shows up on the sub-category page with a completion toggle and a clickable card that routes to the placeholder topic page.
+
+---
+
+## How to add article content to a topic
+
+Topics carry an optional `article` field. When it's present, the topic page renders a full article instead of the "Article coming soon" placeholder.
+
+An article is a list of typed sections. Each section is a small object that the renderer dispatches to a dedicated block component. See [`src/content/types.ts`](src/content/types.ts) for the full type, and [`src/content/ux-design/design-systems.ts`](src/content/ux-design/design-systems.ts) for a complete worked example.
+
+### Available section types
+
+| Type | Fields | What it renders |
+| --- | --- | --- |
+| `definition` | `content` | Highlighted block at the top with an accent border |
+| `body` | `content` | Prose. Supports `**bold**`, blank-line paragraphs, and `- ` bullet lists |
+| `section-heading` | `content` | H2 within the article |
+| `sub-heading` | `content` | H3 within the article |
+| `callout` | `calloutType` (`'insight' \| 'warning' \| 'example'`), `content` | Subtly tinted block with a label |
+| `visual` | `visualId`, `caption` | Renders a registered visual or interactive demo |
+| `cross-refs` | `items` (array of `CrossReference`) | Row of linked cards at the bottom |
+
+### Example
+
+```ts
+article: {
+  sections: [
+    { type: 'definition', content: 'One-sentence definition…' },
+    { type: 'section-heading', content: 'Why this matters' },
+    { type: 'body', content: 'Paragraph one.\n\nParagraph two.\n\n- Bullet a\n- Bullet b' },
+    { type: 'callout', calloutType: 'insight', content: 'Key insight…' },
+    { type: 'visual', visualId: 'my-diagram', caption: 'Caption text.' },
+    { type: 'cross-refs', items: [
+      { domainSlug: 'ux-design', subcategorySlug: 'design-systems',
+        topicSlug: 'design-tokens', label: 'Design Tokens', reason: 'Why it relates.' },
+    ]},
+  ],
+},
+```
+
+### Adding a new visual or interactive demo
+
+1. Build the component under `src/components/Article/visuals/` (static) or `src/components/Article/demos/` (interactive).
+2. Import it in [`src/components/Article/visuals/index.ts`](src/components/Article/visuals/index.ts) and register it under a stable id.
+3. Reference that id from an article section's `visualId`.
+
+If you reference a `visualId` that hasn't been built yet, the page renders a small "Visual not built yet: …" note instead of crashing — so you can write content first and add the visual later.
+
+### Cross-references that point to non-existent topics
+
+It's fine for a cross-reference to point to a topic that doesn't exist yet (locked sub-categories, future topics). The link will navigate to a graceful "Topic coming soon" page rather than a broken 404.
 
 ---
 

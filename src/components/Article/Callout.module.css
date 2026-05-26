@@ -1,0 +1,41 @@
+/*
+ * Callouts pull a hint of colour from semantic accents we set per-variant.
+ * We deliberately do NOT use saturated reds / greens for warning / example —
+ * the site has one accent. We vary tone and label, not hue.
+ */
+
+.callout {
+  --callout-tint: var(--color-accent);
+  background-color: color-mix(in srgb, var(--callout-tint) 6%, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--callout-tint) 18%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--space-16) var(--space-24);
+}
+
+.insight {
+  --callout-tint: var(--color-accent);
+}
+
+.warning {
+  /* A muted warm tint — distinct from accent without breaking palette discipline. */
+  --callout-tint: #b97a3f;
+}
+
+.example {
+  /* A muted greenish tint, again kept low-saturation. */
+  --callout-tint: #6b8a6e;
+}
+
+.label {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  color: var(--callout-tint);
+  margin-bottom: var(--space-8);
+}
+
+.content {
+  font-size: var(--text-base);
+  color: var(--color-text);
+}

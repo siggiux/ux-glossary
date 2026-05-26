@@ -1,0 +1,93 @@
+.root {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-16);
+  align-items: stretch;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .root {
+    grid-template-columns: 1fr;
+  }
+  .bridge {
+    transform: rotate(90deg);
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.label {
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  font-weight: var(--weight-semibold);
+}
+
+.figmaPanel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  flex: 1;
+}
+
+.propRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: var(--space-8);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.propRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.propName {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  font-weight: var(--weight-medium);
+}
+
+.propValues {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.bridge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-subtle);
+  font-size: 1.5rem;
+  padding: 0 var(--space-8);
+}
+
+.code {
+  margin: 0;
+  padding: var(--space-16);
+  background-color: var(--color-stone-900, #0f0f0f);
+  color: #f5f5f4;
+  border-radius: var(--radius-md);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  overflow-x: auto;
+  flex: 1;
+}
+
+[data-theme='dark'] .code {
+  background-color: #000000;
+  border: 1px solid var(--color-border);
+}
