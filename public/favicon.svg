@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    Brain favicon. Stroke-only so it stays crisp at any size.
+    Colour matches the site accent (#4A6B7C) in light mode and lifts
+    to a brighter slate (#6A8A9A) in dark mode so it stays visible
+    against dark browser chrome / tab backgrounds.
+  -->
+  <style>
+    .brain {
+      fill: none;
+      stroke: #4A6B7C;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    @media (prefers-color-scheme: dark) {
+      .brain { stroke: #6A8A9A; }
+    }
+  </style>
+  <g class="brain">
+    <!-- Left hemisphere outline -->
+    <path d="M32 12 C 22 10, 14 16, 14 24 C 9 26, 9 38, 14 42 C 14 50, 22 56, 32 54" />
+    <!-- Right hemisphere outline -->
+    <path d="M32 12 C 42 10, 50 16, 50 24 C 55 26, 55 38, 50 42 C 50 50, 42 56, 32 54" />
+    <!-- Central division -->
+    <path d="M32 12 L 32 54" />
+    <!-- Left fold -->
+    <path d="M20 30 Q 26 32, 24 38" />
+    <!-- Right fold -->
+    <path d="M44 30 Q 38 32, 40 38" />
+  </g>
+</svg>
